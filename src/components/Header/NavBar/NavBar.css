@@ -1,0 +1,32 @@
+.nav {
+    display: flex;
+    margin: 0 21px 0 0;
+    font-size: 14px;
+    line-height: 1.22;
+    color: var(--white-color);
+    position: relative;
+}
+
+.nav__list {
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav__link {
+    padding: 8px 20px;
+    color: var(--white-color);
+    text-decoration: none;
+    transition: opacity .3s;
+}
+
+.nav__link:hover {
+    opacity: .6;
+}
+
+.nav__link_green {
+    background: var(--green-botton);
+    border-radius: 3px;
+    --white-color: black;
+}

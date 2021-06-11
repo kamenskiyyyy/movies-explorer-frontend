@@ -1,0 +1,32 @@
+.techs {
+    padding: 100px 70px;
+    background: var(--gray-color);
+}
+
+.techs__head {
+    font-weight: normal;
+    font-size: 1.4rem;
+    line-height: 27px;
+    padding-bottom: 23px;
+    border-bottom: #DADADA 1px solid;
+}
+
+.techs__head_h3 {
+    margin-top: 90px;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 58px;
+
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+.techs__head_desc {
+    margin: 26px auto 100px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    max-width: 460px;
+}

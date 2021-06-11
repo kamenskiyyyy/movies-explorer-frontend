@@ -1,0 +1,21 @@
+.promo {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    width: 95vw;
+    background: var(--gray-color);
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.promo__head {
+    margin: auto;
+    max-width: 730px;
+    color: var(--white-color);
+    font-weight: normal;
+    font-size: 3.1rem;
+    line-height: 58px;
+    text-align: center;
+    align-self: center;
+}

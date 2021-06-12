@@ -8,11 +8,12 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import NotFound from "../NotFound/NotFound";
 
 function App() {
   return (
     <div className='page__container'>
-      <Header/>
+
       <Switch>
         <Route path='/signup'>
           <Register/>
@@ -30,10 +31,15 @@ function App() {
           <Movies/>
         </Route>
         <Route exact path="/">
+          <Header/>
           <About/>
+          <Footer/>
+        </Route>
+        <Route path='*'>
+          <NotFound/>
         </Route>
       </Switch>
-      <Footer/>
+
     </div>
   );
 }

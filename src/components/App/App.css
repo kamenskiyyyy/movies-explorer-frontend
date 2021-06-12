@@ -1,9 +1,10 @@
 .page__container {
+    margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     min-width: 282px;
     min-height: 100vh;
-    /*width: calc(100% - 19px * 2);*/
+    max-width: calc(100% - 19px * 2);
+    width: 1280px;
 }

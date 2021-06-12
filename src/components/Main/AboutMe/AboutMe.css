@@ -1,0 +1,75 @@
+.aboutMe {
+    padding: 100px 70px;
+}
+
+.aboutMe__head {
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    padding-bottom: 23px;
+    border-bottom: #DADADA 1px solid;
+}
+
+.aboutMe__table {
+    margin: 66px auto 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 270px;
+}
+
+.aboutMe__table_head {
+    margin: 0;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+}
+
+.aboutMe__table_subtitle {
+    margin: 18px 0 26px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.aboutMe__table_desc {
+    margin: 0;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.aboutMe__table_avatar {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.aboutMe__table_links {
+    margin: 99px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+.aboutMe__table_links li {
+    margin-right: 20px;
+}
+
+.aboutMe__table_links li:last-child {
+    margin-right: 0;
+}
+
+.aboutMe__table_links_item {
+    color: var(--white-color);
+    text-decoration: none;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    transition: linear 400ms;
+}
+
+.aboutMe__table_links_item:hover, .aboutMe__table_links_item:focus, .aboutMe__table_links_item:active {
+    opacity: 50%;
+}

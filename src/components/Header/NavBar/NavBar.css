@@ -1,24 +1,28 @@
 .nav {
     display: flex;
+    justify-content: space-between;
     margin: 0 21px 0 0;
+    width: 100%;
     font-size: 0.9rem;
     line-height: 1.22;
     color: var(--white-color);
-    position: relative;
 }
 
 .nav__list {
-    justify-content: flex-end;
+    display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .nav__link {
-    padding: 8px 20px;
+    padding: 8px 16px;
     color: var(--white-color);
     text-decoration: none;
     transition: opacity .3s;
+    display: flex;
+    align-items: center;
 }
 
 .nav__link:hover {
@@ -29,4 +33,15 @@
     background: var(--green-color);
     border-radius: 3px;
     --white-color: black;
+}
+
+.nav__link_icon {
+    margin-left: 13px;
+    padding: 9px;
+    background-color: #313131;
+    border-radius: 6px;
+}
+
+.nav__link_active {
+    font-weight: 500;
 }

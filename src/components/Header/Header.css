@@ -7,3 +7,12 @@
     min-height: 74px;
     box-sizing: border-box;
 }
+
+.header__logo {
+    margin-right: 44px;
+    transition: linear 200ms;
+}
+
+.header__logo:focus, .header__logo:hover {
+    opacity: 50%;
+}

@@ -1,0 +1,4 @@
+.movies {
+    margin: 80px 70px;
+    width: calc(90% + 19px * 2);
+}

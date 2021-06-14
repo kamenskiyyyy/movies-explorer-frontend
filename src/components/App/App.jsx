@@ -28,7 +28,9 @@ function App() {
           <SavedMovies/>
         </Route>
         <Route path='/movies'>
+          <Header/>
           <Movies/>
+          <Footer/>
         </Route>
         <Route exact path="/">
           <Header/>

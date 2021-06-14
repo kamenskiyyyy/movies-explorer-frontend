@@ -1,8 +1,8 @@
-import './NavBar.css';
+import './Navigation.css';
 import {NavLink} from "react-router-dom";
 import icon from '../../../images/profile-icon.svg';
 
-function NavBar() {
+function Navigation() {
   return (
     <>
       {/*/!* Меню неавторизованный пользователь *!/ // В настоящий момент скрыто, из-за отсутствия провайдера*/}
@@ -33,4 +33,4 @@ function NavBar() {
   )
 }
 
-export default NavBar;
+export default Navigation;

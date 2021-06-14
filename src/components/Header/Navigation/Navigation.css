@@ -25,7 +25,7 @@
     align-items: center;
 }
 
-.nav__link:hover {
+.nav__link:hover, .nav__link:focus, .nav__link:active {
     opacity: .6;
 }
 

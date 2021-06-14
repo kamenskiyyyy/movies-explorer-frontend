@@ -23,6 +23,10 @@
     transition: opacity .3s;
     display: flex;
     align-items: center;
+
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 18px;
 }
 
 .nav__link:hover, .nav__link:focus, .nav__link:active {

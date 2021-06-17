@@ -22,6 +22,7 @@ function App() {
           <Login/>
         </Route>
         <Route path='/profile'>
+          <Header/>
           <Profile/>
         </Route>
         <Route path='/saved-movies'>

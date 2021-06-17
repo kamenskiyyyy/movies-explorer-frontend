@@ -25,7 +25,7 @@ function Navigation() {
         </ul>
         <ul className='nav__list'>
           <li>
-            <NavLink className='nav__link' to='/signup'>Аккаунт <img className='nav__link_icon' src={icon} alt="Иконка профиля"/></NavLink>
+            <NavLink activeClassName='nav__link_active' className='nav__link' to='/profile'>Аккаунт <img className='nav__link_icon' src={icon} alt="Иконка профиля"/></NavLink>
           </li>
         </ul>
       </nav>

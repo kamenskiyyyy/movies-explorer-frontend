@@ -1,5 +1,5 @@
 import './MoviesCardList.css';
-import MoviesCard from "./MoviesCard/MoviesCard";
+import MoviesCard from "../MoviesCard/MoviesCard";
 import dataMovies from "../../vendor/dataMovies";
 
 function MoviesCardList(props) {

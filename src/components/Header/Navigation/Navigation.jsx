@@ -1,12 +1,24 @@
 import './Navigation.css';
 import {NavLink} from "react-router-dom";
 import icon from '../../../images/profile-icon.svg';
+import {useState} from "react";
 
 function Navigation() {
+  const [isNavOpened, setIsNavOpened] = useState(false);                                             // Стейт мобильная навигация открыта
+
+  // Обработчик клика по меню
+  function handleNavClick() {
+    setIsNavOpened(!isNavOpened);
+  }
+
+  function handleOffNavClick() {
+    setIsNavOpened(false);
+  }
+
   return (
     <>
       {/*/!* Меню неавторизованный пользователь *!/ // В настоящий момент скрыто, из-за отсутствия провайдера*/}
-      {/*<nav className='nav'>*/}
+      {/*<nav className='nav guest'>*/}
       {/*  <ul className='nav__list'>*/}
       {/*    <li>*/}
       {/*      <NavLink className='nav__link' to='/signup'>Регистрация</NavLink>*/}
@@ -18,14 +30,25 @@ function Navigation() {
       {/*</nav>*/}
 
       {/* Меню авторизованный пользователь */}
-      <nav className='nav'>
-        <ul className='nav__list'>
-          <li><NavLink activeClassName='nav__link_active' className='nav__link' to='/movies'>Фильмы</NavLink></li>
-          <li><NavLink activeClassName='nav__link_active' className='nav__link' to='/saved-movies'>Сохраненные фильмы</NavLink></li>
+      <button type='button' className={`nav__btn ${isNavOpened && 'nav__btn_close'}`} onClick={handleNavClick}/>
+      <nav className={`nav ${isNavOpened && 'nav__mobile'}`}>
+        <ul className={`nav__list ${isNavOpened && 'nav__list_mobile'}`}>
+          <li><NavLink exact activeClassName='nav__link_active' onClick={handleOffNavClick}
+                       className={`nav__link ${isNavOpened && 'nav__link_mobile'}`} to='/'>Главная</NavLink></li>
+          <li><NavLink activeClassName='nav__link_active' onClick={handleOffNavClick}
+                       className={`nav__link ${isNavOpened && 'nav__link_mobile'}`} to='/movies'>Фильмы</NavLink></li>
+          <li><NavLink activeClassName='nav__link_active' onClick={handleOffNavClick}
+                       className={`nav__link ${isNavOpened && 'nav__link_mobile'}`} to='/saved-movies'>Сохраненные
+            фильмы</NavLink></li>
         </ul>
-        <ul className='nav__list'>
+        <ul className={`nav__list ${isNavOpened && 'nav__list_mobile'}`}>
           <li>
-            <NavLink activeClassName='nav__link_active' className='nav__link' to='/profile'>Аккаунт <img className='nav__link_icon' src={icon} alt="Иконка профиля"/></NavLink>
+            <NavLink
+              activeClassName='nav__link_active'
+              onClick={handleOffNavClick}
+              className={`nav__link ${isNavOpened && 'nav__link_mobile'}`}
+              to='/profile'
+            >Аккаунт <img className='nav__link_icon' src={icon} alt="Иконка профиля"/></NavLink>
           </li>
         </ul>
       </nav>

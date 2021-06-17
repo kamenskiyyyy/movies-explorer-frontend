@@ -5,7 +5,14 @@ function SearchForm() {
   return (
     <form className='search'>
       <div className='search__item'>
-        <input className='search__item_input' placeholder='Фильм' type="text"/>
+        <input
+          className='search__item_input'
+          name='search'
+          required
+          placeholder='Фильм'
+          type="text"
+          autoComplete="off"
+        />
         <button className='search__item_button' type='submit'/>
       </div>
       <FilterCheckbox/>

@@ -63,6 +63,11 @@
     color: white;
     border-radius: 30px;
     cursor: pointer;
+
+    padding: 6px 7px;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 9px;
 }
 
 .movies-card__item:hover .movies-card__item_save {
@@ -102,4 +107,24 @@
 .movies-card__item:hover .movies-card__item_delete {
     opacity: 1;
     transition: linear .3s;
+}
+
+@media screen and (max-width: 850px) {
+    .movies-card__item_head {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .movies-card__item_save {
+        opacity: 1;
+    }
+    .movies-card__item_delete {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .movies-card__item:last-child {
+        margin: 14px 0 0;
+    }
 }

@@ -24,7 +24,18 @@
     .promo {
         width: 100%;
     }
+
     .promo__head {
         font-size: 40px;
+    }
+}
+
+@media all and (max-width: 425px) {
+    .promo {
+        width: 95%;
+    }
+    .promo__head {
+        font-size: 29px;
+        line-height: 37px;
     }
 }

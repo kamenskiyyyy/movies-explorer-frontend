@@ -36,3 +36,18 @@
         padding: 90px 30px;
     }
 }
+
+@media screen and (max-width: 425px) {
+    .techs {
+        padding: 70px 9px;
+    }
+    .techs__head_h3 {
+        font-size: 30px;
+        line-height: 36px;
+    }
+    .techs__head_desc {
+        margin: 24px auto 50px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+}

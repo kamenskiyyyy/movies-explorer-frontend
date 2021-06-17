@@ -78,23 +78,62 @@
     .aboutMe {
         padding: 90px 30px;
     }
+
     .aboutMe__table {
         grid-template-columns: 3fr 2fr;
     }
+
     .aboutMe__table_head {
         font-size: 40px;
         line-height: 40px;
     }
+
     .aboutMe__table_subtitle {
         font-size: 12px;
         line-height: 18px;
         margin: 16px 0 20px;
     }
+
     .aboutMe__table_desc {
         font-size: 12px;
         line-height: 18px;
     }
+
     .aboutMe__table_links {
         margin-top: 87px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .aboutMe {
+        padding: 70px 9px;
+    }
+
+    .aboutMe__table {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .aboutMe__table_avatar {
+        margin-bottom: 40px;
+    }
+
+    .aboutMe__table_links {
+        margin-top: 40px;
+    }
+
+    .aboutMe__table_head {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .aboutMe__table_subtitle {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 20px 0 20px;
+    }
+    .aboutMe__table_desc {
+        font-size: 11px;
+        line-height: 16px;
     }
 }

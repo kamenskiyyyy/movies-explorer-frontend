@@ -8,7 +8,7 @@ function Techs() {
       <h3 className='techs__head_h3'>7 технологий</h3>
       <p className='techs__head_desc'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном
         проекте.</p>
-      <div className='navTab'>
+      <div className='navTab techs__table'>
         <NavTab to='#' name='HTML' size='l'/>
         <NavTab to='#' name='CSS' size='l'/>
         <NavTab to='#' name='JS' size='l'/>

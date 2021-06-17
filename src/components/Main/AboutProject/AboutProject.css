@@ -80,3 +80,40 @@
         margin: 90px 30px;
     }
 }
+
+@media screen and (max-width: 425px) {
+    .aboutP {
+        margin: 90px 9px;
+    }
+
+    .aboutP__table {
+        margin: 60px auto;
+        grid-template-columns: 1fr;
+    }
+
+    .aboutP__table_head {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .aboutP__table_desc {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .aboutP__line_item_head#one {
+        font-size: 11px;
+        white-space: nowrap;
+        line-height: 13px;
+    }
+
+    .aboutP__line_item_head#two {
+        font-size: 11px;
+        white-space: nowrap;
+        line-height: 13px;
+    }
+    .aboutP__line_item_desc {
+        font-size: 11px;
+        line-height: 13px;
+    }
+}

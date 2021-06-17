@@ -1,5 +1,5 @@
 .aboutP {
-    margin: 110px 70px 0;
+    margin: 110px 70px 110px;
 }
 
 .aboutP__head {
@@ -31,7 +31,7 @@
 }
 
 .aboutP__line {
-    margin: 0 auto 110px;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -73,4 +73,10 @@
     font-size: 14px;
     line-height: 17px;
     color: #8B8B8B;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutP {
+        margin: 90px 30px;
+    }
 }

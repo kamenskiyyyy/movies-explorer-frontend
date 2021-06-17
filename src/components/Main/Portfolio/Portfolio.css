@@ -47,3 +47,9 @@
     letter-spacing: -0.04em;
     width: 100%;
 }
+
+@media screen and (max-width: 850px) {
+    .portfolio {
+        margin: 0 30px 90px;
+    }
+}

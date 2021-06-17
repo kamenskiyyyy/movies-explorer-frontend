@@ -19,3 +19,12 @@
     text-align: center;
     align-self: center;
 }
+
+@media all and (max-width: 768px) {
+    .promo {
+        width: 100%;
+    }
+    .promo__head {
+        font-size: 40px;
+    }
+}

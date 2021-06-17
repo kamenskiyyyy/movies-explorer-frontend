@@ -14,8 +14,8 @@
 .aboutMe__table {
     margin: 66px auto 0;
     display: grid;
+    grid-column-gap: 49px;
     grid-template-columns: 2fr 1fr;
-    grid-column-gap: 270px;
 }
 
 .aboutMe__table_head {
@@ -72,4 +72,29 @@
 
 .aboutMe__table_links_item:hover, .aboutMe__table_links_item:focus, .aboutMe__table_links_item:active {
     opacity: 50%;
+}
+
+@media screen and (max-width: 850px) {
+    .aboutMe {
+        padding: 90px 30px;
+    }
+    .aboutMe__table {
+        grid-template-columns: 3fr 2fr;
+    }
+    .aboutMe__table_head {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    .aboutMe__table_subtitle {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 16px 0 20px;
+    }
+    .aboutMe__table_desc {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .aboutMe__table_links {
+        margin-top: 87px;
+    }
 }

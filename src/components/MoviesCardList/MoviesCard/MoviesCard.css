@@ -37,6 +37,8 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 16px;
+    text-align: start;
+    max-width: 250px;
 }
 
 .movies-card__item_dur {
@@ -48,6 +50,7 @@
     color: #8B8B8B;
     border-radius: 3px;
     background: rgba(47, 47, 47, 1);
+    white-space: nowrap;
 }
 
 .movies-card__item_save {

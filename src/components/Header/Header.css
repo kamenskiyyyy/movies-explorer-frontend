@@ -8,8 +8,11 @@
     box-sizing: border-box;
 }
 
-.header__logo {
+.logo {
     margin-right: 44px;
+}
+
+.header__logo {
     transition: linear 200ms;
 }
 

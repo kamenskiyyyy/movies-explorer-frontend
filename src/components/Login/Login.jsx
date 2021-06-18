@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg";
 function Login() {
   return (
     <main className='register'>
-      <NavLink className='header__logo' to='/'><img src={logo} alt="Логотип"/></NavLink>
+      <NavLink className='header__logo register__logo' to='/'><img src={logo} alt="Логотип"/></NavLink>
       <h1 className='register__head'>Рады видеть!</h1>
       <form className='register__form'>
         <label className='register__form_label'>E-mail</label>

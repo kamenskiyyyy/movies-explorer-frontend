@@ -76,12 +76,14 @@
     display: flex;
     flex-direction: row;
     text-align: center;
+    font-size: 14px;
+    line-height: 17px;
 }
 .register__in p {
     margin: 0;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: inherit;
+    line-height: inherit;
     color: #8B8B8B;
 }
 .register__in a {
@@ -89,11 +91,29 @@
     text-decoration: none;
     color: #4285F4;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: inherit;
+    line-height: inherit;
     transition: linear 300ms;
 }
 .register__in a:hover, .register__in a:focus, .register__in a:active {
     opacity: .5;
     outline: none;
+}
+
+@media screen and (max-width: 425px) {
+    .register {
+        margin: 56px auto;
+        width: 90%;
+    }
+    .register__logo {
+        margin-right: 0;
+        align-self: center;
+    }
+    .register__head {
+        text-align: center;
+    }
+    .register__in {
+        font-size: 12px;
+        line-height: 15px;
+    }
 }

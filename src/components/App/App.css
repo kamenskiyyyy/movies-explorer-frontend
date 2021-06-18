@@ -7,4 +7,5 @@
     min-height: 100vh;
     max-width: calc(100% - 19px * 2);
     width: 1280px;
+    scroll-behavior: smooth;
 }

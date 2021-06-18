@@ -9,13 +9,13 @@ function Techs() {
       <p className='techs__head_desc'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном
         проекте.</p>
       <div className='navTab techs__table'>
-        <NavTab to='#' name='HTML' size='l'/>
-        <NavTab to='#' name='CSS' size='l'/>
-        <NavTab to='#' name='JS' size='l'/>
-        <NavTab to='#' name='React' size='l'/>
-        <NavTab to='#' name='Git' size='l'/>
-        <NavTab to='#' name='Express.js' size='l'/>
-        <NavTab to='#' name='mongoDB' size='l'/>
+        <NavTab to='https://developer.mozilla.org/docs/Web/HTML' openNewTab={true} name='HTML' size='l'/>
+        <NavTab to='https://developer.mozilla.org/docs/Web/CSS' openNewTab={true} name='CSS' size='l'/>
+        <NavTab to='https://javascript.info/' openNewTab={true} name='JS' size='l'/>
+        <NavTab to='https://reactjs.org/' openNewTab={true} name='React' size='l'/>
+        <NavTab to='https://git-scm.com/' openNewTab={true} name='Git' size='l'/>
+        <NavTab to='https://nodejsdev.ru/doc/express/' openNewTab={true} name='Express.js' size='l'/>
+        <NavTab to='https://www.mongodb.com/' openNewTab={true} name='mongoDB' size='l'/>
       </div>
     </section>
   )

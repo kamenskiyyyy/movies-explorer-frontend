@@ -1,6 +1,6 @@
 // Временный костыль для ревью
 import one from '../images/preview/33_word_of_design.jpg';
-import two from '../images/preview/Kinoalmanakh_"100_years_of_design".jpg';
+import two from '../images/preview/Kinoalmanakh_100_years_of_design.jpg';
 import three from '../images/preview/Chasing_Banksy.jpg';
 import four from '../images/preview/Basquiat_Explosion_of_Reality.jpg';
 import five from '../images/preview/Running_is_freedom.jpg';

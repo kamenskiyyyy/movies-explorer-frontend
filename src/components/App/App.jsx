@@ -9,8 +9,26 @@ import Login from "../Login/Login";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import NotFound from "../NotFound/NotFound";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import {useCallback, useState} from "react";
+import {statusSuccessMessage} from "../../utils/constants";
+import statusSuccessImage from '../../images/success.svg';
 
 function App() {
+  const [infoTooltip, setInfoTooltip] = useState({                                                   // Стейт информационного попапа статуса
+    isOpen: false,
+    image: statusSuccessImage,
+    message: statusSuccessMessage
+  });
+
+  // Функция закрытия всех попапов
+  const closePopup = useCallback(() => {
+    setInfoTooltip({
+      ...infoTooltip,
+      isOpen: false
+    });
+  }, [infoTooltip])
+
   return (
     <div className='page__container'>
       <Switch>
@@ -43,7 +61,12 @@ function App() {
           <NotFound/>
         </Route>
       </Switch>
-
+      <InfoTooltip
+        isOpen={infoTooltip.isOpen}
+        onClose={closePopup}
+        statusImage={infoTooltip.image}
+        statusMessage={infoTooltip.message}
+      />
     </div>
   );
 }

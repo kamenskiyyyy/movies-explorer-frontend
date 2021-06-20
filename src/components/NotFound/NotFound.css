@@ -35,4 +35,7 @@
     line-height: 17px;
     text-align: center;
     color: #4285F4;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }

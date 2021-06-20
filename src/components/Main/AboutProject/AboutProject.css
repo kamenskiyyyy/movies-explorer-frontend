@@ -1,0 +1,119 @@
+.aboutP {
+    margin: 110px 70px 110px;
+}
+
+.aboutP__head {
+    font-weight: normal;
+    font-size: 1.4rem;
+    line-height: 27px;
+    padding-bottom: 23px;
+    border-bottom: #DADADA 1px solid;
+}
+
+.aboutP__table {
+    display: grid;
+    margin: 70px auto 110px;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 40px;
+}
+
+.aboutP__table_head {
+    font-weight: normal;
+    font-size: 1.25rem;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+}
+
+.aboutP__table_desc {
+    font-weight: normal;
+    font-size: 0.9rem;
+    line-height: 20px;
+}
+
+.aboutP__line {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.aboutP__line_item:first-child {
+    margin: 0 auto;
+    flex-grow: 1;
+}
+
+.aboutP__line_item {
+    margin: 0 auto;
+    flex-grow: 4;
+}
+
+.aboutP__line_item_head#one {
+    margin: 0 auto;
+    padding: 9px 14px;
+    background: var(--green-color);
+    color: #000000;
+
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.aboutP__line_item_head#two {
+    margin: 0 auto;
+    padding: 9px 85px;
+    background: #303030;
+
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.aboutP__line_item_desc {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8B8B8B;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutP {
+        margin: 90px 30px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .aboutP {
+        margin: 90px 9px;
+    }
+
+    .aboutP__table {
+        margin: 60px auto;
+        grid-template-columns: 1fr;
+    }
+
+    .aboutP__table_head {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .aboutP__table_desc {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .aboutP__line_item_head#one {
+        font-size: 11px;
+        white-space: nowrap;
+        line-height: 13px;
+    }
+
+    .aboutP__line_item_head#two {
+        font-size: 11px;
+        white-space: nowrap;
+        line-height: 13px;
+    }
+    .aboutP__line_item_desc {
+        font-size: 11px;
+        line-height: 13px;
+    }
+}

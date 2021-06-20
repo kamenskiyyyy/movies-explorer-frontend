@@ -1,0 +1,27 @@
+@import url('./vendor/fonts/fonts/fonts.css');
+
+:root {
+  --page-color: #202020;
+  --white-color: #FFFFFF;
+  --green-color: #3DDC84;
+  --gray-color: #272727;
+
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--page-color);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  color: var(--white-color);
+
+
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}

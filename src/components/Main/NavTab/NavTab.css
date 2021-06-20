@@ -1,0 +1,56 @@
+.navTab {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navTab_item {
+    padding: 10px 23px;
+    margin-right: 10px;
+    color: var(--white-color);
+    text-decoration: none;
+    background: #303030;
+    border-radius: 10px;
+    transition: linear 200ms;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.navTab_item:last-child {
+    margin-right: 0;
+}
+
+.navTab_item:hover, .navTab_item:focus, .navTab_item:active {
+    opacity: 0.5;
+}
+
+.navTab_item#l {
+    padding: 21px 26px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 425px) {
+    .techs__table {
+        margin: 0 auto 10px;
+        width: 192px;
+        justify-content: flex-start;
+    }
+
+    .navTab_item {
+        font-size: 10px;
+        line-height: 16px;
+        margin-bottom: 10px;
+        padding: 5px 15px;
+    }
+
+    .navTab_item#l {
+        padding: 0;
+        padding-top: 21px;
+        text-align: center;
+        width: 84px;
+        height: 36px;
+    }
+}

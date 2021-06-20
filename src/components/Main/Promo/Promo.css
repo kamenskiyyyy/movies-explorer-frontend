@@ -1,0 +1,41 @@
+.promo {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    width: 95%;
+    background: var(--gray-color);
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.promo__head {
+    margin: auto;
+    max-width: 730px;
+    color: var(--white-color);
+    font-weight: normal;
+    font-size: 3.1rem;
+    line-height: 58px;
+    text-align: center;
+    align-self: center;
+}
+
+@media all and (max-width: 768px) {
+    .promo {
+        width: 100%;
+    }
+
+    .promo__head {
+        font-size: 40px;
+    }
+}
+
+@media all and (max-width: 425px) {
+    .promo {
+        width: 95%;
+    }
+    .promo__head {
+        font-size: 29px;
+        line-height: 37px;
+    }
+}

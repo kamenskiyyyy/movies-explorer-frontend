@@ -13,14 +13,11 @@ class MainApi {
       .then(handleOriginalResponse);
   }
 
-  editProfile(userInfo) {
+  editProfile(name, email) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
-      body: JSON.stringify({
-        name: userInfo.name,
-        email: userInfo.email
-      })
+      body: JSON.stringify({name, email})
     })
       .then(handleOriginalResponse);
   }

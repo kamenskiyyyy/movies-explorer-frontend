@@ -74,6 +74,13 @@
     opacity: .8;
     outline: none;
 }
+.register_btn-disabled {
+    background: #8B8B8B;
+    cursor: auto;
+}
+.register_btn-disabled:hover, .register_btn-disabled:focus {
+    opacity: 1;
+}
 
 .register__in {
     margin: auto;

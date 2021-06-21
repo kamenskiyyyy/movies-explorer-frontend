@@ -1,60 +1,54 @@
 import './Register.css';
 import logo from '../../images/logo.svg';
 import {Link, NavLink} from "react-router-dom";
-import {useState} from "react";
+import {useValidationForm} from "../../hooks/useValidationForm";
 
-function Register({handleRegister}) {
-  const [userData, setUserData] = useState({
-    name: '',
-    password: '',
-    email: ''
-  });
+function Register(props) {
+  const {values, handleErrors, errors, isValid} = useValidationForm();
 
-  function handleChange(evt) {
-    const {name, value} = evt.target;
-    setUserData({
-      ...userData,
-      [name]: value
-    })
-  }
-
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    const {name, password, email} = userData;
-    handleRegister(evt, name, password, email);
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.handleRegister(e, values.name, values.email, values.password);
   }
 
   return (
     <main className='register'>
       <NavLink className='header__logo register__logo' to='/'><img src={logo} alt="Логотип"/></NavLink>
       <h1 className='register__head'>Добро пожаловать!</h1>
-      <form className='register__form' onSubmit={handleSubmit}>
+      <form name='register-form' className='register__form' onSubmit={handleSubmit}>
         <label className='register__form_label'>Имя</label>
         <input
           required
           autoComplete='off'
-          className='register__form_input'
+          className={`register__form_input ${errors.name && 'error'}`}
           type="text"
           name="name"
-          onChange={handleChange}/>
+          value={values.name || ''}
+          onChange={handleErrors}/>
+        <span className='register__form_span'>{errors.name}</span>
         <label className='register__form_label'>E-mail</label>
         <input
           required
           autoComplete='off'
-          className='register__form_input'
+          className={`register__form_input ${errors.email && 'error'}`}
           type="email"
           name="email"
-          onChange={handleChange}/>
+          value={values.email || ''}
+          onChange={handleErrors}/>
+        <span className='register__form_span'>{errors.email}</span>
         <label className='register__form_label'>Пароль</label>
         <input
           required
           autoComplete='off'
-          className='register__form_input error'
+          className={`register__form_input ${errors.password && 'error'}`}
           type="password"
           name="password"
-          onChange={handleChange}/>
-        <span className='register__form_span'>Что-то пошло не так...</span>
-        <button type='submit' className='register_btn'>Зарегистрироваться</button>
+          value={values.password || ''}
+          onChange={handleErrors}/>
+        <span className='register__form_span'>{errors.password}</span>
+        <button type='submit' className={`register_btn ${!isValid && 'register_btn-disabled'}`}
+                disabled={!isValid}>Зарегистрироваться
+        </button>
       </form>
       <div className='register__in'>
         <p>Уже зарегистрированы?</p>

@@ -5,13 +5,13 @@ class Auth {
     this.baseUrl = options.baseUrl;
   }
 
-  register = (name, password, email) => {
+  register = (name, email, password) => {
     return fetch(`${this.baseUrl}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({name, password, email})
+      body: JSON.stringify({name, email, password})
     })
       .then(handleOriginalResponse)
       .then(data => {
@@ -22,7 +22,7 @@ class Auth {
       })
   }
 
-  authorize = (password, email) => {
+  authorize = (email, password) => {
     return fetch(`${this.baseUrl}/signin`, {
       method: 'POST',
       headers: {

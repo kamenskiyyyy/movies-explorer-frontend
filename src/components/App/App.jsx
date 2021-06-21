@@ -52,14 +52,16 @@ function App() {
   }, [infoTooltip])
 
   // Обработчик по кнопке Войти
-  function handleLogin(evt, password, email) {
-    auth.authorize(password, email)
+  function handleLogin(e, email, password) {
+    auth.authorize(email, password)
       .then(() => {
         setLoggedIn(true);
         history.push('/movies');
       })
-      .catch(err => handleError(evt.target, err));                                          // По указанным Логину и Паролю пользователь не найден. Проверьте введенные данные и повторите попытку.
+      .catch(err => handleError(e.target, err));                                          // По указанным Логину и Паролю пользователь не найден. Проверьте введенные данные и повторите попытку.
   }
+
+
 
   // Обработчик ошибки по кнопке Войти
   function handleError(form, statusError) {
@@ -90,8 +92,8 @@ function App() {
   }
 
   // // Обработчик обновления информации пользователя
-  function handleUpdateUser(userInfo) {
-    api.editProfile(userInfo)
+  function handleUpdateUser(evt, name, email) {
+    api.editProfile(name, email)
       .then(data => {
         setCurrentUser({...data});
         setInfoTooltip({
@@ -99,9 +101,9 @@ function App() {
           isOpen: true,
           image: statusSuccessImage,
           message: statusEditMessage
-        });
+        })
       })
-      .catch(err => handleError(userInfo.evt.target, err));
+      .catch(err => handleError(evt.target, err));
   }
 
   // Проверка токена при повторном посещении сайта
@@ -132,6 +134,8 @@ function App() {
   function signOut() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
+    localStorage.removeItem('savedMovies');
+    localStorage.removeItem('movies');
     history.push('/');
   }
 
@@ -143,7 +147,7 @@ function App() {
     let foundMovies = [];
 
     movies.forEach((movie) => {
-      if (movie.nameRU.indexOf(keyword) > -1) {
+      if (movie.nameRU.toLowerCase().indexOf(keyword) > -1) {
         if (isShortMovies) {
           movie.duration <= 40 && foundMovies.push(movie);
         } else {
@@ -175,7 +179,7 @@ function App() {
             setMovies(JSON.parse(localStorage.getItem('movies')));
           }
         })
-        .catch(err => {
+        .catch(() => {
           setMoviesError(true);
           setMovies([]);
         })
@@ -243,6 +247,7 @@ function App() {
       api.getSavedMovies()
         .then((res) => {
           setSavedMovies(res);
+          localStorage.setItem('savedMovies', JSON.stringify(res));
         })
         .catch(err => console.log(err));
     }

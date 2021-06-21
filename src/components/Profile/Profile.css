@@ -23,6 +23,15 @@
     display: flex;
     justify-content: space-between;
 }
+.profile__info_item div {
+    display: flex;
+    width: 80%;
+    align-items: flex-end;
+    flex-direction: column;
+}
+.profile__info_item_span {
+    text-align: right;
+}
 
 .profile__info_item:first-child {
     padding-bottom: 17px;
@@ -72,6 +81,11 @@
     border: none;
     background: transparent;
     cursor: pointer;
+    transition: linear 300ms;
+}
+.profile__setup_edit_disabled {
+    color: #8B8B8B;
+    cursor: auto;
 }
 
 .profile__setup_out {

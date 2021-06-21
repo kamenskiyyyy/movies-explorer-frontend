@@ -13,6 +13,10 @@ export const statusErrors = [
       {
         status: 401,
         message: 'Пользователь не найден. Проверьте Email и Пароль.'
+      },
+      {
+        status: 409,
+        message: 'Пользователь с таким email уже существует'
       }
     ]
   },

@@ -11,7 +11,13 @@ import Footer from "../Footer/Footer";
 import NotFound from "../NotFound/NotFound";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import {useCallback, useEffect, useState} from "react";
-import {statusEditMessage, statusErrors, statusErrorText, statusSuccessMessage} from "../../utils/constants";
+import {
+  statusEditMessage,
+  statusErrors,
+  statusErrorText,
+  statusLoadMessage,
+  statusSuccessMessage
+} from "../../utils/constants";
 import statusSuccessImage from '../../images/success.svg';
 import statusErrorImage from '../../images/error.svg';
 import {AppContext} from "../../contexts/AppContext";
@@ -43,6 +49,16 @@ function App() {
     email: ''
   });
 
+  function loadingPopup(bullion) {
+    setIsLoading(bullion);
+    setInfoTooltip({
+      ...infoTooltip,
+      isOpen: true,
+      image: false,
+      message: statusLoadMessage
+    });
+  }
+
   // Функция закрытия всех попапов
   const closePopup = useCallback(() => {
     setInfoTooltip({
@@ -53,15 +69,18 @@ function App() {
 
   // Обработчик по кнопке Войти
   function handleLogin(e, email, password) {
+    loadingPopup(true)
     auth.authorize(email, password)
       .then((data) => {
         setCurrentUser({...data});
+        setIsLoading(false)
+        setInfoTooltip({isOpen: false})
         setLoggedIn(true);
         history.push('/movies');
+        window.location.reload();
       })
       .catch(err => handleError(e.target, err));                                          // По указанным Логину и Паролю пользователь не найден. Проверьте введенные данные и повторите попытку.
   }
-
 
 
   // Обработчик ошибки по кнопке Войти
@@ -72,14 +91,17 @@ function App() {
       ...infoTooltip,
       isOpen: true,
       image: statusErrorImage,
-      message: statusErrorMessage ? statusErrorMessage : statusErrorText
+      message: statusErrorMessage || statusErrorText
     });
   }
 
   // Обработчик по кнопке Зарегистрироваться
   function handleRegister(evt, name, password, email) {
+    loadingPopup(true)
     auth.register(name, password, email)
-      .then(() => {
+      .then((data) => {
+        setCurrentUser({...data});
+        setIsLoading(false);
         setInfoTooltip({
           ...infoTooltip,
           isOpen: true,
@@ -88,15 +110,18 @@ function App() {
         });
         setLoggedIn(true);
         history.push('/movies');
+        window.location.reload();
       })
       .catch(err => handleError(evt.target, err));                                                                // Обработка ошибки handleError();
   }
 
   // // Обработчик обновления информации пользователя
   function handleUpdateUser(evt, name, email) {
+    loadingPopup(true)
     api.editProfile(name, email)
       .then(data => {
         setCurrentUser({...data});
+        setIsLoading(false);
         setInfoTooltip({
           ...infoTooltip,
           isOpen: true,
@@ -161,7 +186,6 @@ function App() {
         }
       }
     })
-
     return foundMovies;
   }
 
@@ -311,6 +335,7 @@ function App() {
             </Route>
           </Switch>
           <InfoTooltip isOpen={infoTooltip.isOpen}
+                       isLoading={isLoading}
                        onClose={closePopup}
                        statusImage={infoTooltip.image}
                        statusMessage={infoTooltip.message}/>

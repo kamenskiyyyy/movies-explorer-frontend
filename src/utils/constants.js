@@ -1,4 +1,5 @@
 export const statusSuccessMessage = 'Вы успешно зарегистрировались!';
+export const statusLoadMessage = 'Идет загрузка...';
 export const statusEditMessage = 'Информация успешно изменена!';
 export const statusErrorText = 'Что-то пошло не так! Попробуйте еще раз.';
 

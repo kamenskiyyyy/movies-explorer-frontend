@@ -21,10 +21,13 @@
     border-radius: 50px;
     transition: linear 400ms;
 }
+.search__item div {
+    width: 100%;
+}
 
 .search__item_input {
     background-color: transparent;
-    padding: 15px 22px;
+    padding: 15px 22px 0;
     border: none;
     -webkit-appearance: none;
     outline: none;

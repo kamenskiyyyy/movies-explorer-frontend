@@ -1,5 +1,5 @@
 import './App.css';
-import {Switch, Route, useHistory} from "react-router-dom";
+import {Switch, Route, useHistory, useLocation} from "react-router-dom";
 import About from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -19,16 +19,26 @@ import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 import {auth} from "../../utils/auth";
 import ProtectedRoute from "../../hoc/ProtectedRoute";
 import {api} from "../../utils/MainApi";
+import * as moviesApi from '../../utils/MoviesApi';
 
 function App() {
   const history = useHistory();
+  const location = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);                                                   // Стейт-переменная статус пользователя, вход в систему
+  const [movies, setMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
+  const [isShortMovies, setIsShortMovies] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+  const [moviesError, setMoviesError] = useState(false);
+  const [apiMovies, setApiMovies] = useState([]);
   const [infoTooltip, setInfoTooltip] = useState({                                                   // Стейт информационного попапа статуса
     isOpen: false,
     image: statusSuccessImage,
     message: statusSuccessMessage
   });
   const [currentUser, setCurrentUser] = useState({                                                   // Стейт данные текущего пользователя
+    _id: '',
     name: '',
     email: ''
   });
@@ -88,7 +98,7 @@ function App() {
       .catch(err => console.log(err));
   }
 
-  // // Проверка токена при повторном посещении сайта
+  // Проверка токена при повторном посещении сайта
   const tokenCheck = useCallback(() => {
     const token = localStorage.getItem('jwt');
     if (token) {
@@ -119,6 +129,99 @@ function App() {
     history.push('/');
   }
 
+  function handleShortMovies(e) {
+    setIsShortMovies(e.target.checked);
+  }
+
+  function searchMoviesByKeyword(movies, keyword) {
+    let foundMovies = [];
+
+    movies.forEach((movie) => {
+      if (movie.nameRU.indexOf(keyword) > -1) {
+        if (isShortMovies) {
+          movie.duration <= 40 && foundMovies.push(movie);
+        } else {
+          foundMovies.push(movie);
+        }
+      }
+    })
+
+    return foundMovies;
+  }
+
+  function searchMovies(keyword) {
+    setIsLoading(true);
+    setMovies([]);
+    setNotFound(false);
+    setMoviesError(false);
+
+    if (apiMovies.length === 0) {
+      moviesApi.getMovies()
+        .then(resMovies => {
+          setApiMovies(resMovies);
+          const searchResult = searchMoviesByKeyword(resMovies, keyword);
+
+          if (searchResult.length === 0) {
+            setNotFound(true);
+            setMovies([]);
+          } else {
+            localStorage.setItem('movies', JSON.stringify(searchResult));
+            setMovies(JSON.parse(localStorage.getItem('movies')));
+          }
+        })
+        .catch(err => {
+          setMoviesError(true);
+          setMovies([]);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        })
+    } else {
+      const searchResult = searchMoviesByKeyword(apiMovies, keyword);
+
+      if (searchResult.length === 0) {
+        setMovies([]);
+        setIsLoading(false);
+        setNotFound(true);
+      } else if (searchResult.length !== 0) {
+        localStorage.setItem('movies', JSON.stringify(searchResult));
+        setMovies(JSON.parse(localStorage.getItem('movies')));
+        setIsLoading(false);
+      } else {
+        setMoviesError(true);
+        setMovies([]);
+      }
+    }
+  }
+
+  function searchSavedMovies(keyword) {
+    const movies = JSON.parse(localStorage.getItem('savedMovies'));
+    const searchResult = searchMoviesByKeyword(movies, keyword);
+    setSavedMovies(searchResult);
+  }
+
+  function saveMovie(movie) {
+    api.saveMovie(movie)
+      .then((data) => {
+        const movies = [...savedMovies, data];
+        setSavedMovies(prev => ([...prev, data]));
+        localStorage.setItem('savedMovies', JSON.stringify(movies))
+      })
+      .catch(err => console.log(`Error: ${err}`));
+  }
+
+  function deleteMovie(movieId) {
+    api.deleteMovie(movieId)
+      .then(() => {
+        const filteredSavedMovies = savedMovies.filter((item) => {
+          return item._id !== movieId
+        });
+        setSavedMovies(filteredSavedMovies);
+        localStorage.setItem('savedMovies', JSON.stringify(filteredSavedMovies));
+      })
+      .catch(err => console.log(`Error: ${err}`));
+  }
+
   // Загрузка данных пользователя
   useEffect(() => {
     api.getUserInfo()
@@ -127,6 +230,19 @@ function App() {
       })
       .catch(err => console.log(err));
   }, []);
+
+  // Загрузка фильмов
+  useEffect(() => {
+    if (loggedIn) {
+      api.getSavedMovies()
+        .then((res) => {
+          setSavedMovies(res);
+        })
+        .catch(err => console.log(err));
+    }
+  }, [location, loggedIn])
+
+  console.log(savedMovies)
 
   return (
     <AppContext.Provider value={{loggedIn, handleLogin, signOut}}>
@@ -143,16 +259,31 @@ function App() {
             </Route>
             <ProtectedRoute path='/profile'>
               <Header isLogin={loggedIn}/>
-              <Profile onUpdateUser={handleUpdateUser} />
+              <Profile onUpdateUser={handleUpdateUser}/>
             </ProtectedRoute>
             <ProtectedRoute path='/saved-movies'>
               <Header isLogin={loggedIn}/>
-              <SavedMovies/>
+              <SavedMovies isLoading={isLoading}
+                           movies={savedMovies}
+                           moviesError={moviesError}
+                           notFound={notFound}
+                           handleSearchSavedMovies={searchSavedMovies}
+                           isShortMovies={isShortMovies}
+                           handleDeleteMovie={deleteMovie}
+                           handleShortMovies={handleShortMovies}/>
               <Footer/>
             </ProtectedRoute>
             <ProtectedRoute path='/movies'>
               <Header isLogin={loggedIn}/>
-              <Movies/>
+              <Movies isLoading={isLoading}
+                      moviesError={moviesError}
+                      notFound={notFound}
+                      handleSearchMovies={searchMovies}
+                      movies={movies}
+                      handleShortMovies={handleShortMovies}
+                      isShortMovies={isShortMovies}
+                      handleSaveMovie={saveMovie}
+                      handleDeleteMovie={deleteMovie}/>
               <Footer/>
             </ProtectedRoute>
             <Route exact path="/">

@@ -18,12 +18,13 @@
 
 .movies-card__item_img {
     border-radius: 6px;
-    width: 100%;
     object-fit: cover;
     object-position: center;
     -moz-transition: all 400ms ease-out;
     -o-transition: all 400ms ease-out;
     -webkit-transition: all 400ms ease-out;
+    height: 201px;
+    width: 360px;
 }
 
 .movies-card__item_img:hover {
@@ -88,7 +89,6 @@
     border: none;
     border-radius: 30px;
     background: #EE3465 url("../../images/tick_icon.svg") no-repeat center;
-    cursor: pointer;
 }
 
 .movies-card__item_delete {
@@ -121,10 +121,18 @@
     .movies-card__item_delete {
         opacity: 1;
     }
-}
-
-@media screen and (max-width: 850px) {
     .movies-card__item:last-child {
         margin: 14px 0 0;
+    }
+    .movies-card__item_img {
+        height: 190px;
+        width: 339px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .movies-card__item_img {
+        height: 168px;
+        width: 300px;
     }
 }

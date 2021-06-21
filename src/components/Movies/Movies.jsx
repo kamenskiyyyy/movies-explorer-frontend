@@ -1,14 +1,19 @@
 import './Movies.css';
 import SearchForm from "../SearchForm/SearchForm";
-// import Preloader from "./Preloader/Preloader";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
-function Movies() {
+function Movies({isLoading, ...props}) {
   return (
     <main className='movies'>
-      <SearchForm/>
-      {/*<Preloader />*/}
-      <MoviesCardList/>
+      <SearchForm handleSearchMovies={props.handleSearchMovies}
+                  isShortMovies={props.isShortMovies}
+                  handleShortMovies={props.handleShortMovies}/>
+      <MoviesCardList isLoading={isLoading}
+                      movies={props.movies}
+                      moviesError={props.moviesError}
+                      notFound={props.notFound}
+                      handleSaveMovie={props.handleSaveMovie}
+                      handleDeleteMovie={props.handleDeleteMovie}/>
     </main>
   )
 }

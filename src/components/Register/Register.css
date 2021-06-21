@@ -49,10 +49,14 @@
 }
 
 .register__form_span {
+    visibility: visible;
     font-weight: normal;
     font-size: 10px;
     line-height: 12px;
     color: #EE3465;
+}
+.register__form_span_hidden {
+    visibility: hidden;
 }
 
 .register_btn {

@@ -16,9 +16,9 @@ import statusSuccessImage from '../../images/success.svg';
 import statusErrorImage from '../../images/error.svg';
 import {AppContext} from "../../contexts/AppContext";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
-import {auth} from "../../utils/MainApi";
+import {auth} from "../../utils/auth";
 import ProtectedRoute from "../../hoc/ProtectedRoute";
-import {api} from "../../utils/MoviesApi";
+import {api} from "../../utils/MainApi";
 
 function App() {
   const history = useHistory();

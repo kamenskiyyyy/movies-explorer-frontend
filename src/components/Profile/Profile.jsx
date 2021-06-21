@@ -24,7 +24,7 @@ function Profile({onUpdateUser}) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onUpdateUser({name, email});
+    onUpdateUser({evt, name, email});
     setIsEdit(false);
   }
 

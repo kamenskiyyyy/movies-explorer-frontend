@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer";
 import NotFound from "../NotFound/NotFound";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import {useCallback, useEffect, useState} from "react";
-import {statusErrors, statusErrorText, statusSuccessMessage} from "../../utils/constants";
+import {statusEditMessage, statusErrors, statusErrorText, statusSuccessMessage} from "../../utils/constants";
 import statusSuccessImage from '../../images/success.svg';
 import statusErrorImage from '../../images/error.svg';
 import {AppContext} from "../../contexts/AppContext";
@@ -94,8 +94,14 @@ function App() {
     api.editProfile(userInfo)
       .then(data => {
         setCurrentUser({...data});
+        setInfoTooltip({
+          ...infoTooltip,
+          isOpen: true,
+          image: statusSuccessImage,
+          message: statusEditMessage
+        });
       })
-      .catch(err => console.log(err));
+      .catch(err => handleError(userInfo.evt.target, err));
   }
 
   // Проверка токена при повторном посещении сайта
@@ -241,8 +247,6 @@ function App() {
         .catch(err => console.log(err));
     }
   }, [location, loggedIn])
-
-  console.log(savedMovies)
 
   return (
     <AppContext.Provider value={{loggedIn, handleLogin, signOut}}>

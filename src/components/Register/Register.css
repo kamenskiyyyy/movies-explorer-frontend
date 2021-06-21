@@ -41,7 +41,9 @@
 
 .register__form_input:hover, .register__form_input:focus, .register__form_input:active {
     outline: none;
-    background: rgb(66, 66, 66);
+    -webkit-box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.48);
+    -moz-box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.48);
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.48);
 }
 
 .error {

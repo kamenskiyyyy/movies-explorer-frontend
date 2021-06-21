@@ -54,7 +54,8 @@ function App() {
   // Обработчик по кнопке Войти
   function handleLogin(e, email, password) {
     auth.authorize(email, password)
-      .then(() => {
+      .then((data) => {
+        setCurrentUser({...data});
         setLoggedIn(true);
         history.push('/movies');
       })
@@ -133,6 +134,11 @@ function App() {
   // Выход из аккаунта
   function signOut() {
     setLoggedIn(false);
+    setCurrentUser({
+      _id: '',
+      name: '',
+      email: ''
+    })
     localStorage.removeItem('jwt');
     localStorage.removeItem('savedMovies');
     localStorage.removeItem('movies');

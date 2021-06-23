@@ -38,20 +38,6 @@ class Auth {
         }
       })
   }
-
-  getContent = (token) => {
-    return fetch(`${this.baseUrl}/users/me`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        "Authorization": `Bearer ${token}`
-      },
-    })
-      .then(handleOriginalResponse)
-      .then(data => {
-        return data;
-      })
-  }
 }
 
 export const auth = new Auth({

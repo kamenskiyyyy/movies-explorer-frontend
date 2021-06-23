@@ -87,8 +87,14 @@
     right: 14px;
     position: absolute;
     border: none;
+    cursor: pointer;
     border-radius: 30px;
     background: #EE3465 url("../../images/tick_icon.svg") no-repeat center;
+    transition: linear 400ms;
+}
+.movies-card__item_saved:hover, .movies-card__item_saved:focus {
+    background: #313131 url("../../images/delete_icon.svg") no-repeat center;
+    cursor: pointer;
 }
 
 .movies-card__item_delete {

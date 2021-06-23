@@ -10,7 +10,8 @@ class MainApi {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers
     })
-      .then(handleOriginalResponse);
+      .then(handleOriginalResponse)
+      .then(data => data)
   }
 
   editProfile(name, email) {

@@ -135,11 +135,14 @@ function App() {
   // Проверка токена при повторном посещении сайта
   const tokenCheck = useCallback(() => {
     const token = localStorage.getItem('jwt');
+    const movies = JSON.parse(localStorage.getItem('movies'));
     if (token) {
-      auth.getContent(token)
+      api.getUserInfo(token)
         .then(res => {
           if (res) {
             setLoggedIn(true);
+            setCurrentUser({...res});
+            setMovies(movies);
             history.push('/movies')
           }
         })
@@ -154,7 +157,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, [tokenCheck]);
+  }, [history, loggedIn, tokenCheck]);
 
   // Выход из аккаунта
   function signOut() {
@@ -164,6 +167,8 @@ function App() {
       name: '',
       email: ''
     })
+    setApiMovies([]);
+    setMovies([]);
     localStorage.removeItem('jwt');
     localStorage.removeItem('savedMovies');
     localStorage.removeItem('movies');
@@ -274,14 +279,19 @@ function App() {
   // Загрузка фильмов
   useEffect(() => {
     if (loggedIn) {
-      api.getSavedMovies()
-        .then((res) => {
-          setSavedMovies(res);
-          localStorage.setItem('savedMovies', JSON.stringify(res));
-        })
-        .catch(err => console.log(err));
+      if (savedMovies.length !== 0) {
+        const savedMovies = localStorage.getItem('savedMovies');
+        setSavedMovies(JSON.parse(savedMovies));
+      } else {
+        api.getSavedMovies()
+          .then((res) => {
+            setSavedMovies(res);
+            localStorage.setItem('savedMovies', JSON.stringify(res));
+          })
+          .catch(err => console.log(err));
+      }
     }
-  }, [location, loggedIn])
+  }, [location, loggedIn, savedMovies.length])
 
   return (
     <AppContext.Provider value={{loggedIn, handleLogin, signOut}}>

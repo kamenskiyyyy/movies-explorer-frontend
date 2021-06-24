@@ -71,7 +71,7 @@
 }
 
 .aboutMe__table_links_item:hover, .aboutMe__table_links_item:focus, .aboutMe__table_links_item:active {
-    opacity: 50%;
+    opacity: .5;
 }
 
 @media screen and (max-width: 850px) {

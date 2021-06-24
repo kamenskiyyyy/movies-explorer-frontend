@@ -110,7 +110,6 @@ function App() {
         });
         setLoggedIn(true);
         history.push('/movies');
-        window.location.reload();
       })
       .catch(err => handleError(evt.target, err));                                                                // Обработка ошибки handleError();
   }
@@ -136,7 +135,7 @@ function App() {
   const tokenCheck = useCallback(() => {
     const token = localStorage.getItem('jwt');
     if (token) {
-      api.getUserInfo()
+      auth.getContent(token)
         .then(res => {
           if (res) {
             setLoggedIn(true);
@@ -155,7 +154,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, [history, loggedIn, tokenCheck]);
+  }, [tokenCheck]);
 
   // Выход из аккаунта
   function signOut() {
@@ -181,7 +180,7 @@ function App() {
     let foundMovies = [];
 
     movies.forEach((movie) => {
-      if (movie.nameRU.toLowerCase().indexOf(keyword) > -1) {
+      if (movie.nameRU.indexOf(keyword) > -1) {
         if (isShortMovies) {
           movie.duration <= 40 && foundMovies.push(movie);
         } else {

@@ -72,10 +72,10 @@ function App() {
     loadingPopup(true)
     auth.authorize(email, password)
       .then((data) => {
-        setCurrentUser({...data});
         setIsLoading(false)
         setInfoTooltip({isOpen: false})
         setLoggedIn(true);
+        setCurrentUser({...data});
         history.push('/movies');
         window.location.reload();
       })
@@ -135,14 +135,12 @@ function App() {
   // Проверка токена при повторном посещении сайта
   const tokenCheck = useCallback(() => {
     const token = localStorage.getItem('jwt');
-    const movies = JSON.parse(localStorage.getItem('movies'));
     if (token) {
-      api.getUserInfo(token)
+      api.getUserInfo()
         .then(res => {
           if (res) {
             setLoggedIn(true);
             setCurrentUser({...res});
-            setMovies(movies);
             history.push('/movies')
           }
         })
@@ -279,8 +277,12 @@ function App() {
   // Загрузка фильмов
   useEffect(() => {
     if (loggedIn) {
-      if (savedMovies.length !== 0) {
-        const savedMovies = localStorage.getItem('savedMovies');
+      const movies = localStorage.getItem('movies');
+      const savedMovies = localStorage.getItem('savedMovies');
+      if (movies) {
+        setMovies(JSON.parse(movies));
+      }
+      if (savedMovies) {
         setSavedMovies(JSON.parse(savedMovies));
       } else {
         api.getSavedMovies()
@@ -291,7 +293,7 @@ function App() {
           .catch(err => console.log(err));
       }
     }
-  }, [location, loggedIn, savedMovies.length])
+  }, [location, loggedIn])
 
   return (
     <AppContext.Provider value={{loggedIn, handleLogin, signOut}}>

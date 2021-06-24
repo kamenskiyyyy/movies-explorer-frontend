@@ -11,7 +11,9 @@ class MainApi {
       headers: this.headers
     })
       .then(handleOriginalResponse)
-      .then(data => data)
+      .then(data => {
+        return data
+      })
   }
 
   editProfile(name, email) {

@@ -41,7 +41,9 @@
 
 .register__form_input:hover, .register__form_input:focus, .register__form_input:active {
     outline: none;
-    background: rgb(66, 66, 66);
+    -webkit-box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.48);
+    -moz-box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.48);
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.48);
 }
 
 .error {
@@ -49,10 +51,14 @@
 }
 
 .register__form_span {
+    visibility: visible;
     font-weight: normal;
     font-size: 10px;
     line-height: 12px;
     color: #EE3465;
+}
+.register__form_span_hidden {
+    visibility: hidden;
 }
 
 .register_btn {
@@ -69,6 +75,13 @@
 .register_btn:hover, .register_btn:focus, .register_btn:active {
     opacity: .8;
     outline: none;
+}
+.register_btn-disabled {
+    background: #8B8B8B;
+    cursor: auto;
+}
+.register_btn-disabled:hover, .register_btn-disabled:focus {
+    opacity: 1;
 }
 
 .register__in {

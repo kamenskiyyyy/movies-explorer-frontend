@@ -24,7 +24,7 @@
 }
 
 .navTab_item:hover, .navTab_item:focus, .navTab_item:active {
-    opacity: 0.5;
+    opacity: .5;
 }
 
 .navTab_item#l {

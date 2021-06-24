@@ -23,6 +23,15 @@
     display: flex;
     justify-content: space-between;
 }
+.profile__info_item div {
+    display: flex;
+    width: 80%;
+    align-items: flex-end;
+    flex-direction: column;
+}
+.profile__info_item_span {
+    text-align: right;
+}
 
 .profile__info_item:first-child {
     padding-bottom: 17px;
@@ -35,6 +44,7 @@
     font-weight: 500;
     font-size: 11px;
     line-height: 13px;
+    white-space: nowrap;
 }
 
 .profile__info_item_desc {
@@ -42,6 +52,16 @@
     font-weight: normal;
     font-size: 11px;
     line-height: 13px;
+    color: var(--white-color);
+    background: transparent;
+    border: 0;
+    width: 80%;
+    text-align: right;
+    transition: linear 400ms;
+}
+
+.profile__info_item_desc__active {
+    background: var(--gray-color);
 }
 
 .profile__setup {
@@ -58,6 +78,14 @@
     line-height: 16px;
     text-decoration: none;
     color: var(--white-color);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: linear 300ms;
+}
+.profile__setup_edit_disabled {
+    color: #8B8B8B;
+    cursor: auto;
 }
 
 .profile__setup_out {
@@ -67,12 +95,16 @@
     line-height: 16px;
     color: #EE3465;
     text-decoration: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 450px) {
     .profile {
         margin: 70px 30px;
     }
+
     .profile__info {
         width: 100%;
     }

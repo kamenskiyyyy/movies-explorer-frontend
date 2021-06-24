@@ -1,27 +1,41 @@
 import {Link, NavLink} from "react-router-dom";
 import logo from "../../images/logo.svg";
+import {useValidationForm} from "../../hooks/useValidationForm";
 
-function Login() {
+function Login(props) {
+  const {values, handleErrors, errors, isValid} = useValidationForm();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.handleLogin(e, values.email, values.password);
+  }
+
   return (
     <main className='register'>
       <NavLink className='header__logo register__logo' to='/'><img src={logo} alt="Логотип"/></NavLink>
       <h1 className='register__head'>Рады видеть!</h1>
-      <form className='register__form'>
+      <form name='login-form' className='register__form' onSubmit={handleSubmit}>
         <label className='register__form_label'>E-mail</label>
         <input
           required
           autoComplete='off'
-          className='register__form_input'
+          className={`register__form_input ${errors.email && 'error'}`}
           type="email"
-          name="email"/>
+          name="email"
+          value={values.email || ''}
+          onChange={handleErrors}/>
+        <span className='register__form_span'>{errors.email}</span>
         <label className='register__form_label'>Пароль</label>
         <input
           required
           autoComplete='off'
-          className='register__form_input error'
+          className={`register__form_input ${errors.password && 'error'}`}
           type="password"
-          name="password"/>
-        <button type='submit' className='register_btn'>Зарегистрироваться</button>
+          name="password"
+          value={values.password || ''}
+          onChange={handleErrors}/>
+        <span className='register__form_span'>{errors.password}</span>
+        <button type='submit' className={`register_btn ${!isValid && 'register_btn-disabled'}`} disabled={!isValid}>Войти</button>
       </form>
       <div className='register__in'>
         <p>Ещё не зарегистрированы?</p>

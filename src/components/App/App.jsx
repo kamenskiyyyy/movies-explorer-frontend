@@ -87,11 +87,12 @@ function App() {
   function handleError(form, statusError) {
     const errors = statusErrors.filter(error => error.name === form.name)[0].errors;
     const statusErrorMessage = errors.filter(error => error.status === statusError)[0].message;
+    setIsLoading(false);
     setInfoTooltip({
       ...infoTooltip,
       isOpen: true,
       image: statusErrorImage,
-      message: statusErrorMessage || statusErrorText
+      message: statusErrorMessage ? statusErrorMessage : statusErrorText
     });
   }
 
@@ -323,7 +324,7 @@ function App() {
                            handleShortMovies={handleShortMovies}/>
               <Footer/>
             </ProtectedRoute>
-            <ProtectedRoute path='/movies'>
+            <ProtectedRoute exact path='/movies'>
               <Header isLogin={loggedIn}/>
               <Movies isLoading={isLoading}
                       moviesError={moviesError}

@@ -73,6 +73,8 @@ function MoviesCardList({isLoading, ...props}) {
 
         {renderedMovies.map((movie) => {
           return <MoviesCard
+            loggedIn={props.loggedIn}
+            isLoading={isLoading}
             key={props.isSavedMovies ? movie.movieId : movie.id}
             movie={movie}
             handleSaveMovie={props.handleSaveMovie}

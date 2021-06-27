@@ -25,6 +25,7 @@
     -webkit-transition: all 400ms ease-out;
     height: 201px;
     width: 360px;
+    cursor: pointer;
 }
 
 .movies-card__item_img:hover {

@@ -18,6 +18,10 @@ export const statusErrors = [
       {
         status: 409,
         message: 'Пользователь с таким email уже существует'
+      },
+      {
+        status: 500,
+        message: 'Сервер не смог выполнить запрос'
       }
     ]
   },
